@@ -19,12 +19,12 @@ public class GROV {
 	/**
 	 * Iterate over every member variable and assign a randomly generated value.
 	 * 
-	 * @param object
-	 *            - object with member variables that will be assigned
+	 * @param t
+	 *            - generic object with member variables that will be assigned
 	 * @return - object with randomly generated member variable values
 	 */
-	public static <T> T generate(T object) {
-		Field[] memberFields = object.getClass().getDeclaredFields();
+	public static <T> T generate(T objectToPopulate) {
+		Field[] memberFields = objectToPopulate.getClass().getDeclaredFields();
 		for (Field memberField : memberFields) {
 			// allows private member variables to be accessed
 			memberField.setAccessible(true);
@@ -32,7 +32,7 @@ public class GROV {
 			// get field
 			Class<?> fieldClass = memberField.getType();
 			if (fieldClass.isPrimitive()) {
-				PrimitiveWorker.generatePrimitiveValue(object, memberField);
+				PrimitiveWorker.generatePrimitiveValue(objectToPopulate, memberField);
 			} else {
 				/* TODO: Object generation 
 				 * 
@@ -45,8 +45,9 @@ public class GROV {
 			}
 
 			// reset member variable access to Java language constraints
-			memberField.setAccessible(true);
+			memberField.setAccessible(false);
 		}
-		return object;
+		
+		return objectToPopulate;
 	}
 }
