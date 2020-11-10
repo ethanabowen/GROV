@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import com.grov.mocks.PrimitiveVariables;
 
-public class TestPrimitives {
+public class TestPrimatives {
 
 	@Test
 	public void test() throws IllegalArgumentException, IllegalAccessException {

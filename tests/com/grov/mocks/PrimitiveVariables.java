@@ -1,5 +1,7 @@
 package com.grov.mocks;
 
+import java.util.List;
+
 /**
  * Class of every Java primitive as member variables with private access.
  * 
@@ -16,7 +18,7 @@ public class PrimitiveVariables {
 	private boolean primativeBoolean;
 	private byte primativeByte;
 	private char primativeChar;
-
+	
 	public int getPrimativeInt() {
 		return primativeInt;
 	}
